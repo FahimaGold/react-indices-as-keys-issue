@@ -6,7 +6,7 @@ function App() {
   
   useEffect(() => {
     console.log("render...")
-  }, [])
+  }, [tasks])
   
   let nextId = useRef(2);
   const addTask = (newItem) =>{
