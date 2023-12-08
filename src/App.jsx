@@ -16,12 +16,13 @@ function App() {
   return (
     <>
     <div>
+
     <ul>
      {tasks.map((task, i) => (
-      
        <li key={i}>index : {i}, {task.task} with id: {task.id}</li>
     ))}
      </ul>
+     
      <button onClick={() => addTask({id: nextId.current,task: "Another task"})}>Add task</button>
      </div>
     </>
