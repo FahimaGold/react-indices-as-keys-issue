@@ -1,22 +1,28 @@
-import {  useEffect } from 'react'
+import {  useState, useEffect, useRef } from 'react'
 
 
 function App() {
+  const [tasks, setTask] = useState([{id: 1, task: "some task"}])
   
   useEffect(() => {
     console.log("render...")
   }, [])
-  let list = [{id: 1, task: "some task"}]
+  
+  let nextId = useRef(2);
+  const addTask = (newItem) =>{
+    setTask ((prevArray) => [newItem, ...prevArray]);
+    nextId.current++;
+  }
   return (
     <>
     <div>
-      <button>Add task</button>
-     <ul>
-     {list.map((item, i) => {
+    <ul>
+     {tasks.map((task, i) => (
       
-      return <li key={i}>index : {i}, {item.task}</li>
-     })}
+       <li key={i}>index : {i}, {task.task} with id: {task.id}</li>
+    ))}
      </ul>
+     <button onClick={() => addTask({id: nextId.current,task: "Another task"})}>Add task</button>
      </div>
     </>
   )
